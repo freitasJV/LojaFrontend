@@ -31,11 +31,9 @@ export class HomePage {
   }
 
   login() {
-    console.log(this.creds);
-    //this.navCtrl.setRoot('CategoriasPage');
     this.auth.authenticate(this.creds)
       .subscribe(response => {
-        console.log(response.headers.get('Authorization'));
+        this.auth.successfulLogin(response.headers.get('Authorization'));
         this.navCtrl.setRoot('CategoriasPage');
       },
       error => {});    
