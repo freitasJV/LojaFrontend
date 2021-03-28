@@ -33,10 +33,14 @@ export class ProdutosPage {
     for (var i=0; i<this.items.length; i++) {
       let item = this.items[i];
       this.produtoService.getSmallImageFromBucket(item.id)
-        .subscribe(() => {
+        .subscribe(response => {
           item.imageUrl = `${API_CONFIG.bucketBaseUrl}/prod${item.id}-small.jpg`;
         },
         error => {});
     }
-  }  
+  }
+  
+  showDetail() {
+    this.navCtrl.push('ProdutoDetailPage');
+  }
 }
